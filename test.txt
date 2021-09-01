@@ -1,1 +1,3 @@
-we go groove o we go groove!
+View is the smallest building block of UI in native development, basically displays text, images bascially anything that can be used to display. views can also contain other views.
+
+The idea with react native is that it follows the same patterns with react and that means the same component, hooks, format of coding with the exception of certain native components, like View, ScrollView, Text, TextInput etc.
