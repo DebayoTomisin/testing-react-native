@@ -1,26 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, ScrollView } from 'react-native';
-import { Test, PizzaTranslator } from './components/Test';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, FlatList  } from 'react-native';
+import Header from './components/Header'
+import ListItem from './components/ListItem'
 
 export default function App() {
+
+  const [items, setItems] = useState([
+    {id: Math.random(), text: 'Milk'},
+    {id: Math.random(), text: 'Beans'},
+    {id: Math.random(), text: 'Rice'},
+    {id: Math.random(), text: 'Yam'},
+    {id: Math.random(), text: 'Spagetti'},
+    {id: Math.random(), text: 'Beans'},
+  ])
+
   return (
-    // <View style={styles.container}>
-    //   <Text>Open up App.js to start working on your app!</Text>
-    //   <Text>my first line of native code</Text>
-    //   <StatusBar style="auto" />
-    // </View>
-    <View>
-      <Test />
+    <View style={styles.container}>
+      <Header title='Shopping List' />
+      <FlatList 
+        data={items} 
+        renderItem={({item}) => <ListItem item={item} /> }
+        keyExtractor={item => item.id}
+      />
     </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40,
   },
 });
