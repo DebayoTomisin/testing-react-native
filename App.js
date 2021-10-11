@@ -12,14 +12,21 @@ export default function App() {
     {id: Math.random(), text: 'Yam'},
     {id: Math.random(), text: 'Spagetti'},
     {id: Math.random(), text: 'Beans'},
+    {id: Math.random(), text: 'Rice'},
   ])
+
+  const deleteItem = (id) => {
+    setItems(prevItems =>{
+      return prevItems.filter(item => item.id != id)
+    })
+  }
 
   return (
     <View style={styles.container}>
       <Header title='Shopping List' />
       <FlatList 
         data={items} 
-        renderItem={({item}) => <ListItem item={item} /> }
+        renderItem={({item}) => <ListItem item={item} deleteItem={deleteItem} /> }
         keyExtractor={item => item.id}
       />
     </View>
